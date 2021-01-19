@@ -28,3 +28,66 @@ vue add element
 # 全局安装 
 ```
 
+### 引入Bootstrap
+
+```html
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+```
+
+### 安装vue-router和使用
+
+```shell
+# 第一步
+npm install vue-router --save
+# 第二步
+src 新建 router.js
+```
+
+###router.js
+
+```javascript
+import Vue from 'vue'
+import Router from 'vue-router'
+
+Vue.use(Router)
+
+export default new Router({
+  mode: 'history',
+  routes: [
+    {
+      path: '/',
+      name: 'layout',
+      redirect: {name:'index'},
+      component: () => import('./views/layout.vue'),
+      children: [
+      	{
+					path: '/index',
+          name: 'index',
+          component: () => import('./views/index/index.vue')
+    		}
+      ]
+    },
+    {
+      path: '/login',
+      name: 'login',
+      component: ()=>import('./views/login/index.vue')
+    }
+  ]
+})
+```
+
+### main.js
+
+```javascript
+import Vue from 'vue'
+import App from './App.vue'
+import router from './router.js'
+
+Vue.config.productionTip = false
+
+new Vue({
+  router,
+  render: h => h(App),
+}).$mount('#app')
+```
+
