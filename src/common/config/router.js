@@ -3,7 +3,7 @@ let routes = [
     path: '/',
     name: 'layout',
     redirect: {name:'index'},
-    component: layout,
+    component: 'layout',
     children: [
       {
 				meta: { title: '后台首页' },
