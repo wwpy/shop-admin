@@ -5,11 +5,15 @@
         {{$conf.logo}}
       </a>
     </el-header>
-    <el-container style="height: 100%;">
+    <el-container style="height: 100%;padding-bottom: 60px;">
       <!-- 侧边布局 -->
-      <el-aside width="200px"></el-aside>
+      <el-aside width="200px">
+        <li v-for="i in 100" :key="i">{{i}}</li>
+      </el-aside>
       <!-- 主布局 -->
-      <el-main class="bg-light" style="padding-bottom: 60px;position: relative;"></el-main>
+      <el-main class="bg-light" style="padding-bottom: 60px;position: relative;">
+
+      </el-main>
     </el-container>
   </el-container>
   <!-- <router-view></router-view> -->
